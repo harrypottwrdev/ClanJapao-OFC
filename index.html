@@ -1,225 +1,4 @@
-<!doctype html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clan Japão | Minecraft Server</title>
-    <style>
-      :root {
-        --bg-deep: #0a0a0f;
-        --surface: #161625;
-        --surface-light: #1f1f35;
-        --accent-crimson: #ff003c;
-        --accent-neon: #00f3ff;
-        --text-main: #e0e0ff;
-        --text-dim: #8a8ab0;
-        --font-display: "Noto Sans JP", sans-serif;
-        --font-body: "Inter", system-ui, -apple-system, sans-serif;
-        --font-mono: "JetBrains Mono", monospace;
       }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background-color: var(--bg-deep);
-        color: var(--text-main);
-        font-family: var(--font-body);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-
-      /* --- FUNDO COM IMAGEM --- */
-      #bg-image-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -2;
-        background-image: url("URL_DA_SUA_IMAGEM_AQUI");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        filter: brightness(0.4);
-      }
-
-      #bg-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: radial-gradient(
-          circle at center,
-          transparent 0%,
-          var(--bg-deep) 100%
-        );
-      }
-
-      /* --- HEADER --- */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 1rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        background: rgba(10, 10, 15, 0.8);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-      }
-
-      .logo {
-        font-family: var(--font-display);
-        font-weight: 900;
-        font-size: 1.5rem;
-        color: var(--text-main);
-        text-decoration: none;
-        letter-spacing: -1px;
-      }
-
-      .logo span {
-        color: var(--accent-crimson);
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 2rem;
-      }
-
-      nav a {
-        text-decoration: none;
-        color: var(--text-main);
-        font-size: 0.9rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: color 0.3s ease;
-        font-family: var(--font-display);
-        cursor: pointer;
-      }
-
-      nav a:hover {
-        color: var(--accent-neon);
-      }
-
-      h1,
-      h2,
-      h3,
-      h4 {
-        font-family: var(--font-display);
-        text-wrap: balance;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-      }
-
-      .glitch-text {
-        position: relative;
-        display: inline-block;
-        color: var(--text-main);
-        text-shadow:
-          0.05em 0 0 var(--accent-crimson),
-          -0.025em -0.05em 0 var(--accent-neon);
-        animation: glitch 500ms infinite;
-      }
-
-      @keyframes glitch {
-        0% {
-          text-shadow:
-            0.05em 0 0 var(--accent-crimson),
-            -0.05em -0.025em 0 var(--accent-neon);
-        }
-        15% {
-          text-shadow:
-            -0.05em -0.025em 0 var(--accent-crimson),
-            0.025em 0.025em 0 var(--accent-neon);
-        }
-        50% {
-          text-shadow:
-            0.025em 0.05em 0 var(--accent-crimson),
-            0.05em 0 0 var(--accent-neon);
-        }
-        100% {
-          text-shadow:
-            -0.025em 0 0 var(--accent-crimson),
-            -0.025em -0.05em 0 var(--accent-neon);
-        }
-      }
-
-      .hero {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      .hero h1 {
-        font-size: clamp(3rem, 10vw, 6rem);
-        line-height: 0.9;
-        margin-bottom: 1rem;
-      }
-
-      .hero p {
-        font-size: 1.2rem;
-        color: var(--text-dim);
-        max-width: 600px;
-        margin-bottom: 2.5rem;
-      }
-
-      .cta-button {
-        background: var(--accent-crimson);
-        color: white;
-        padding: 1rem 2.5rem;
-        text-decoration: none;
-        font-family: var(--font-display);
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 20px rgba(255, 0, 60, 0.4);
-        display: inline-block;
-        cursor: pointer;
-        border: none;
-      }
-
-      .cta-button:hover {
-        background: transparent;
-        color: var(--accent-crimson);
-        border: 2px solid var(--accent-crimson);
-        box-shadow: 0 0 30px rgba(255, 0, 60, 0.6);
-        transform: translateY(-3px);
-      }
-
-      .server-section {
-        padding: 6rem 2rem;
-        max-width: 1000px;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .section-title {
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
-        display: inline-block;
-      }
-
       .section-title::after {
         content: "";
         position: absolute;
@@ -231,13 +10,7 @@
         background: var(--accent-neon);
       }
 
-      .ip-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-bottom: 4rem;
-      }
-
+      .ip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
       .ip-card {
         background: var(--surface);
         padding: 3rem 2rem;
@@ -245,19 +18,8 @@
         transition: all 0.3s ease;
         cursor: pointer;
       }
-
-      .ip-card:hover {
-        transform: scale(1.02);
-        background: #1d1d35;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      }
-
-      .ip-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--accent-neon);
-      }
-
+      .ip-card:hover { transform: scale(1.02); background: #1d1d35; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+      .ip-card h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--accent-neon); }
       .ip-address {
         font-family: var(--font-mono);
         background: rgba(0, 0, 0, 0.3);
@@ -268,13 +30,7 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         word-break: break-all;
       }
-
-      .copy-hint {
-        font-size: 0.8rem;
-        color: var(--text-dim);
-        margin-top: 0.5rem;
-        display: block;
-      }
+      .copy-hint { font-size: 0.8rem; color: var(--text-dim); margin-top: 0.5rem; display: block; }
 
       .rules-container {
         background: var(--surface);
@@ -284,12 +40,7 @@
         text-align: left;
         margin-bottom: 4rem;
       }
-
-      .rules-list {
-        list-style: none;
-        counter-reset: rule-counter;
-      }
-
+      .rules-list { list-style: none; counter-reset: rule-counter; }
       .rules-list li {
         counter-increment: rule-counter;
         margin-bottom: 1rem;
@@ -297,7 +48,6 @@
         position: relative;
         font-size: 1.1rem;
       }
-
       .rules-list li::before {
         content: counter(rule-counter);
         position: absolute;
@@ -315,13 +65,7 @@
         font-family: var(--font-display);
       }
 
-      .staff-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
-      }
-
+      .staff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
       .staff-card {
         background: var(--surface);
         padding: 2rem 1rem;
@@ -332,21 +76,11 @@
         flex-direction: column;
         align-items: center;
       }
-
-      .staff-card:hover {
-        border-color: var(--accent-neon);
-        transform: translateY(-10px);
-        box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
-      }
-
+      .staff-card:hover { border-color: var(--accent-neon); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1); }
       .staff-avatar {
         width: 80px;
         height: 80px;
-        background: linear-gradient(
-          45deg,
-          var(--accent-crimson),
-          var(--accent-neon)
-        );
+        background: linear-gradient(45deg, var(--accent-crimson), var(--accent-neon));
         border-radius: 50%;
         margin-bottom: 1rem;
         display: flex;
@@ -358,48 +92,18 @@
         border: 3px solid var(--bg-deep);
         overflow: hidden;
       }
-      .staff-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      .staff-avatar img { width: 100%; height: 100%; object-fit: cover; }
+      .staff-name { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.2rem; }
+      .staff-role { color: var(--accent-neon); font-size: 0.8rem; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; }
 
-      .staff-name {
-        font-family: var(--font-display);
-        font-size: 1.2rem;
-        margin-bottom: 0.2rem;
-      }
-
-      .staff-role {
-        color: var(--accent-neon);
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        font-weight: bold;
-        letter-spacing: 1px;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        text-align: left;
-      }
-
+      .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; text-align: left; }
       .feature-card {
         background: var(--surface-light);
         padding: 1.5rem;
         border-radius: 8px;
         border: 1px solid rgba(0, 243, 255, 0.2);
       }
-
-      .feature-card h4 {
-        color: var(--accent-neon);
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
+      .feature-card h4 { color: var(--accent-neon); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
       .cmd-tag {
         font-family: var(--font-mono);
         background: #000;
@@ -418,7 +122,6 @@
         margin-top: 3rem;
         text-align: left;
       }
-
       .boss-tag {
         background: var(--accent-crimson);
         color: white;
@@ -429,21 +132,8 @@
         display: inline-block;
         margin-bottom: 1rem;
       }
-
-      .top-damage {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        margin-top: 2rem;
-        font-family: var(--font-display);
-      }
-
-      .rank {
-        padding: 1rem 2rem;
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 10px;
-        border: 1px solid var(--accent-crimson);
-      }
+      .top-damage { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; font-family: var(--font-display); }
+      .rank { padding: 1rem 2rem; background: rgba(0, 0, 0, 0.4); border-radius: 10px; border: 1px solid var(--accent-crimson); }
 
       footer {
         padding: 4rem 2rem;
@@ -454,189 +144,358 @@
         background: var(--bg-deep);
       }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease-out;
-      }
+      .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
 
-      .reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* --- MODAL / ABA VIP --- */
-      .modal-overlay {
+      /* ==========================================================================
+         ULTRA STORE SYSTEM (Inspired by BawMC & RedeScreen)
+         ========================================================================== */
+      .store-overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(15px);
+        backdrop-filter: blur(25px);
         z-index: 2000;
         display: none;
         justify-content: center;
         align-items: center;
         padding: 2rem;
       }
-
-      .modal-content {
+      .store-container {
         background: var(--surface);
         width: 100%;
-        max-width: 800px;
-        border-radius: 20px;
-        border: 2px solid var(--accent-neon);
+        max-width: 1200px;
+        height: 90vh;
+        border-radius: 30px;
+        border: 1px solid var(--glass-border);
         position: relative;
-        padding: 3rem;
-        max-height: 90vh;
-        overflow-y: auto;
-        box-shadow: 0 0 50px rgba(0, 243, 255, 0.2);
+        display: flex;
+        overflow: hidden;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
+      }
+      .store-sidebar {
+        width: 300px;
+        background: rgba(0, 0, 0, 0.3);
+        border-right: 1px solid var(--glass-border);
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1.5rem;
+      }
+      .store-logo-area {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .store-logo-area h2 { font-size: 1.4rem; color: var(--text-main); }
+      .store-logo-area span { color: var(--accent-neon); }
+
+      .category-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .category-item {
+        padding: 1rem 1.2rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-family: var(--font-display);
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+        color: var(--text-dim);
+        border: 1px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .category-item:hover { background: var(--glass); color: var(--text-main); }
+      .category-item.active {
+        background: rgba(0, 243, 255, 0.1);
+        color: var(--accent-neon);
+        border-color: rgba(0, 243, 255, 0.3);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
       }
 
-      .close-modal {
+      .store-main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.01);
+      }
+      .store-top-bar {
+        padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.1);
+      }
+      .cart-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+        background: var(--glass);
+        padding: 0.6rem 1.2rem;
+        border-radius: 50px;
+        border: 1px solid var(--glass-border);
+        transition: all 0.3s;
+      }
+      .cart-status:hover { border-color: var(--accent-neon); background: rgba(0, 243, 255, 0.05); }
+      .cart-count {
+        background: var(--accent-crimson);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 10px;
+      }
+
+      .store-content {
+        flex: 1;
+        padding: 2rem;
+        overflow-y: auto;
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+      .product-card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-neon);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      }
+      .product-card.featured {
+        border: 2px solid var(--accent-crimson);
+        background: linear-gradient(135deg, rgba(255,0,60,0.1) 0%, rgba(15,15,26,1) 100%);
+      }
+      .featured-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--accent-crimson);
+        color: white;
+        font-size: 0.65rem;
+        font-weight: bold;
+        padding: 4px 12px;
+        border-radius: 50px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(255, 0, 60, 0.4);
+      }
+      .product-card h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-main); }
+      .product-card .price {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--accent-neon);
+        margin-bottom: 1.5rem;
+        display: block;
+      }
+      .btn-add-cart {
+        margin-top: auto;
+        background: var(--accent-neon);
+        color: var(--bg-deep);
+        padding: 0.8rem;
+        border-radius: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-add-cart:hover { background: white; transform: scale(1.05); }
+
+      /* --- CART SECTION --- */
+      .cart-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100%;
+        background: var(--surface);
+        border-left: 1px solid var(--glass-border);
+        display: none;
+        flex-direction: column;
+        z-index: 3000;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        animation: slideIn 0.3s ease-out;
+      }
+      @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+      .cart-header {
+        padding: 2rem;
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .cart-items {
+        flex: 1;
+        overflow-y: auto;
+        padding: 2rem;
+      }
+      .cart-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--glass-border);
+        font-size: 0.9rem;
+      }
+      .cart-item-info h4 { font-size: 1rem; text-transform: none; font-weight: bold; }
+      .cart-item-info span { color: var(--accent-neon); font-family: var(--font-mono); }
+      .btn-remove {
+        background: none;
+        border: none;
+        color: var(--accent-crimson);
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+
+      .cart-footer {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid var(--glass-border);
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1.5rem;
+      }
+
+      /* CUPOM */
+      .coupon-box {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 1.5rem;
+      }
+      .coupon-input {
+        flex: 1;
+        background: var(--bg-deep);
+        border: 1px solid var(--glass-border);
+        padding: 0.6rem;
+        border-radius: 8px;
+        color: white;
+        font-family: var(--font-mono);
+        outline: none;
+      }
+      .coupon-btn {
+        background: var(--surface-light);
+        border: 1px solid var(--glass-border);
+        color: white;
+        padding: 0 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: bold;
+      }
+      .coupon-btn:hover { background: var(--accent-neon); color: var(--bg-deep); }
+      .coupon-msg { font-size: 0.75rem; text-align: center; margin-bottom: 1rem; min-height: 1rem; }
+      .msg-success { color: #00ff88; }
+      .msg-error { color: var(--accent-crimson); }
+
+      .btn-checkout {
+        width: 100%;
+        background: var(--accent-crimson);
+        color: white;
+        padding: 1rem;
+        border-radius: 12px;
+        border: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+      .btn-checkout:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,0,60,0.4); }
+
+      /* --- PAYMENT MODAL --- */
+      .payment-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 4000;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+      }
+      .payment-card {
+        background: var(--surface);
+        max-width: 600px;
+        width: 100%;
+        padding: 3rem;
+        border-radius: 30px;
+        border: 1px solid var(--accent-neon);
+        text-align: center;
+        position: relative;
+      }
+      .payment-card h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--accent-neon); }
+      .pix-box {
+        background: #000;
+        border: 2px dashed var(--accent-neon);
+        padding: 2rem;
+        margin: 2rem 0;
+        border-radius: 15px;
+      }
+      .pix-key { font-family: var(--font-mono); font-size: 1.3rem; display: block; margin-bottom: 0.5rem; }
+      .discord-link {
+        background: rgba(88, 101, 242, 0.1);
+        border: 1px solid #5865f2;
+        padding: 1rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+      }
+      .discord-link a { color: var(--accent-neon); font-weight: bold; text-decoration: none; }
+
+      .close-store {
         position: absolute;
         top: 20px;
         right: 20px;
         font-size: 2rem;
         color: var(--text-dim);
         cursor: pointer;
-        transition: color 0.3s;
-      }
-
-      .close-modal:hover {
-        color: var(--accent-crimson);
-      }
-
-      .vip-options {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 1.5rem;
-        margin: 2rem 0;
-      }
-
-      .vip-card {
-        background: var(--surface-light);
-        padding: 2rem 1rem;
-        border-radius: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        text-align: center;
-      }
-
-      .vip-card:hover {
-        border-color: var(--accent-neon);
-        transform: translateY(-5px);
-        box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-      }
-
-      .vip-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
-        color: var(--accent-neon);
-      }
-
-      .vip-price {
-        font-size: 1.5rem;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 1rem;
-      }
-
-      .vip-details {
-        display: none;
-        text-align: left;
-        margin-top: 2rem;
-        padding: 2rem;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-        border-left: 4px solid var(--accent-crimson);
-      }
-
-      .vip-details ul {
-        list-style: none;
-        margin-top: 1rem;
-      }
-
-      .vip-details li {
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .vip-details li::before {
-        content: "✓";
-      }
-
-      .vip-details li {
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .vip-details li::before {
-        content: "✓";
-        color: var(--accent-neon);
-        font-weight: bold;
-      }
-
-      .payment-area {
-        display: none;
-        margin-top: 2rem;
-        text-align: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 2rem;
-      }
-
-      .pix-key {
-        font-family: var(--font-mono);
-        background: #000;
-        color: #fff;
-        padding: 1rem;
-        display: block;
-        border-radius: 8px;
-        font-size: 1.1rem;
-        margin: 1rem 0;
-        border: 1px dashed var(--accent-neon);
-        word-break: break-all;
-      }
-
-      .discord-notice {
-        background: rgba(88, 101, 242, 0.2);
-        border: 1px solid #5865f2;
-        color: #fff;
-        padding: 1rem;
-        border-radius: 8px;
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
+        z-index: 10;
       }
 
       @media (max-width: 768px) {
-        nav {
-          display: none;
-        }
-        .hero h1 {
-          font-size: 3rem;
-        }
-        .modal-content {
-          padding: 1.5rem;
-        }
+        nav { display: none; }
+        .store-sidebar { width: 80px; padding: 2rem 0.5rem; }
+        .store-logo-area, .nav-category span { display: none; }
+        .nav-category { justify-content: center; padding: 1rem; }
+        .cart-overlay { width: 100%; }
       }
     </style>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&family=Noto+Sans+JP:wght@900&display=swap"
-    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono&family=Noto+Sans+JP:wght@900&display=swap" />
   </head>
-  <body>
-    <!-- Fundo de Imagem -->
+  <body onmousemove="parallax(event)">
     <div id="bg-image-container"></div>
     <div id="bg-overlay"></div>
 
@@ -649,7 +508,7 @@
           <li><a href="#staff">Equipe</a></li>
           <li><a href="#features">Funcionalidades</a></li>
           <li><a href="#boss">Boss</a></li>
-          <li><a onclick="openVipModal()">🛒 Compra VIPs</a></li>
+          <li><a onclick="openStore()">🛒 Loja VIP</a></li>
         </ul>
       </nav>
     </header>
@@ -657,28 +516,19 @@
     <main>
       <section class="hero">
         <h1 class="glitch-text">CLAN JAPÃO</h1>
-        <p>
-          Entre em um mundo de honra, estratégia e construção. O servidor
-          definitivo para quem busca a excelência no Minecraft.
-        </p>
+        <p>Entre em um mundo de honra, estratégia e construção. O servidor definitivo para quem busca a excelência no Minecraft.</p>
         <a href="#join" class="cta-button">Começar Jornada</a>
       </section>
 
       <section id="join" class="server-section">
         <h2 class="section-title reveal">Como Jogar</h2>
         <div class="ip-grid">
-          <div
-            class="ip-card reveal"
-            onclick="copyIp('japanclan.minecraft.ceu.gg:21074', this)"
-          >
+          <div class="ip-card reveal" onclick="copyIp('japanclan.minecraft.ceu.gg:21074', this)">
             <h3>JAVA EDITION</h3>
             <span class="ip-address">japanclan.minecraft.ceu.gg:21074</span>
             <span class="copy-hint">Clique para copiar</span>
           </div>
-          <div
-            class="ip-card reveal"
-            onclick="copyIp('bedrock.ceu.gg:21074', this)"
-          >
+          <div class="ip-card reveal" onclick="copyIp('bedrock.ceu.gg:21074', this)">
             <h3>BEDROCK EDITION</h3>
             <span class="ip-address">bedrock.ceu.gg:21074</span>
             <span class="copy-hint">Clique para copiar</span>
@@ -702,64 +552,44 @@
 
       <section id="staff" class="server-section">
         <h2 class="section-title reveal">👥 Nossa Equipe</h2>
-        <p class="reveal" style="margin-bottom: 2rem; color: var(--text-dim)">
-          Conheça os guardiões do Império.
-        </p>
-
         <div class="staff-grid">
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="flawess2_site_menor.png" alt="FlawlessClock" />
-            </div>
+            <div class="staff-avatar"><img src="flawess2_site_menor.png" /></div>
             <div class="staff-name">FlawlessClock</div>
             <div class="staff-role">Fundador</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="ArthurGG_site_menor.png" alt="ArthurGG__" />
-            </div>
+            <div class="staff-avatar"><img src="ArthurGG_site_menor.png" /></div>
             <div class="staff-name">ArthurGG__</div>
             <div class="staff-role">Dono</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="LixGG_site_menor.png" alt="LixGG" />
-            </div>
+            <div class="staff-avatar"><img src="LixGG_site_menor.png" /></div>
             <div class="staff-name">LixGG</div>
             <div class="staff-role">Dono</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="eu_site_menor.png" alt="HarryDev" />
-            </div>
+            <div class="staff-avatar"><img src="eu_site_menor.png" /></div>
             <div class="staff-name">HarryDev</div>
             <div class="staff-role">Dono</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="ItzGPT_site_menor.png" alt="ItzGP" />
-            </div>
+            <div class="staff-avatar"><img src="ItzGPT_site_menor.png" /></div>
             <div class="staff-name">ItzGP</div>
             <div class="staff-role">SubDono</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="Nicollas_site_menor.png" alt="Nicollas" />
-            </div>
+            <div class="staff-avatar"><img src="Nicollas_site_menor.png" /></div>
             <div class="staff-name">Nicollas</div>
             <div class="staff-role">SubDono</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="Toguim_site_menor.png" alt="Toguim" />
-            </div>
+            <div class="staff-avatar"><img src="Toguim_site_menor.png" /></div>
             <div class="staff-name">Toguim</div>
             <div class="staff-role">Admin</div>
           </div>
           <div class="staff-card reveal">
-            <div class="staff-avatar">
-              <img src="gato_site_menor.png" alt="Nicau389x" />
-            </div>
+            <div class="staff-avatar"><img src="gato_site_menor.png" /></div>
             <div class="staff-name">Nicau389x</div>
             <div class="staff-role">Mod</div>
           </div>
@@ -771,35 +601,23 @@
         <div class="features-grid">
           <div class="feature-card reveal">
             <h4>🤝 Aliança <span class="cmd-tag">/alianca</span></h4>
-            <p>
-              Permite formar alianças estratégicas com outros jogadores do
-              servidor.
-            </p>
+            <p>Permite formar alianças estratégicas com outros jogadores.</p>
           </div>
           <div class="feature-card reveal">
             <h4>🎯 Contrato <span class="cmd-tag">/contrato</span></h4>
-            <p>
-              Crie um contrato com recompensa em dinheiro para eliminar um alvo
-              específico.
-            </p>
+            <p>Crie contratos com recompensa para eliminar alvos.</p>
           </div>
           <div class="feature-card reveal">
-            <h4>
-              🙈 Invisibilidade <span class="cmd-tag">/escondernick</span>
-            </h4>
-            <p>
-              Oculte seu nickname para missões secretas ou táticas de surpresa.
-            </p>
+            <h4>🙈 Invisibilidade <span class="cmd-tag">/escondernick</span></h4>
+            <p>Oculte seu nickname para missões secretas.</p>
           </div>
           <div class="feature-card reveal">
             <h4>👀 Visibilidade <span class="cmd-tag">/mostrarnick</span></h4>
-            <p>Volte a exibir seu nickname para todos os jogadores.</p>
+            <p>Volte a exibir seu nickname para todos.</p>
           </div>
           <div class="feature-card reveal">
             <h4>🎉 Eventos <span class="cmd-tag">/evento entrar</span></h4>
-            <p>
-              Comando oficial para participar de todos os eventos do Clan Japan.
-            </p>
+            <p>Comando oficial para participar de todos os eventos.</p>
           </div>
         </div>
       </section>
@@ -809,23 +627,9 @@
         <div class="boss-info reveal">
           <span class="boss-tag">Atualização do Boss</span>
           <h3>Habilidade de Invisibilidade</h3>
-          <p>
-            O Boss agora consegue desaparecer por <strong>5 segundos</strong>,
-            tornando a luta muito mais imprevisível. Cuidado! Após usar, ele tem
-            um cooldown de 25 segundos.
-          </p>
-
-          <div style="margin-top: 2rem; color: #ffcc00; font-weight: bold">
-            ⚠️ Status: O Clan Japan Boss está temporariamente em manutenção.
-          </div>
-
-          <h4 style="margin-top: 2rem; color: var(--accent-neon)">
-            🏆 Top Damage
-          </h4>
-          <p>
-            Agora conferimos quem causou mais dano ao derrotar o Boss. Dispute o
-            topo!
-          </p>
+          <p>O Boss agora desaparece por <strong>5 segundos</strong>. Cuidado! Cooldown de 25s.</p>
+          <div style="margin-top: 2rem; color: #ffcc00; font-weight: bold">⚠️ Status: Em manutenção.</div>
+          <h4 style="margin-top: 2rem; color: var(--accent-neon)">🏆 Top Damage</h4>
           <div class="top-damage">
             <div class="rank">🥇 1º</div>
             <div class="rank">🥈 2º</div>
@@ -835,248 +639,74 @@
       </section>
     </main>
 
-    <!-- Modal de VIPs -->
-    <div id="vipModal" class="modal-overlay">
-      <div class="modal-content">
-        <span class="close-modal" onclick="closeVipModal()">&times;</span>
-        <h2 style="text-align: center; margin-bottom: 1rem">
-          Escolha seu Plano VIP
-          <span style="color: var(--accent-neon)">(Mensal)</span>
-        </h2>
+    <!-- ULTRA STORE OVERLAY -->
+    <div id="storeOverlay" class="store-overlay">
+      <div class="store-container">
+        <span class="close-store" onclick="closeStore()">&times;</span>
 
-        <div class="vip-options">
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip1', 'VIP ', 'R$ 10,00', [
-                'Tag [VIP]',
-                'Kit Inicial Melhorado',
-                'Acesso ao chat VIP',
-              ])
-            "
-          >
-            <h3>Vip</h3>
-            <span class="vip-price">R$ 10,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
+        <div class="store-sidebar">
+          <div class="store-logo-area">
+            <h2>CLAN <span>JAPÃO</span></h2>
+            <p style="font-size: 0.7rem; color: var(--text-dim)">STORE PREMIUM</p>
           </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip2', 'VIP+', 'R$ 15,00', [
-                'Tag [VIP+]',
-                'Kit  VIP e o VIP+',
-                'Acesso a comandos básicos de VIP',
-                '/escondernick e /mostrarnick',
-                'Prioridade na fila',
-              ])
-            "
-          >
-            <h3>Vip+</h3>
-            <span class="vip-price">R$ 15,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip3', 'Elite', 'R$ 19,99', [
-                'Tag [Elite]',
-                'Kit VIP+ , VIP e o ELite',
-                '/escondernick e /mostrarnick',
-                'Comandos de Teleporte Expandidos',
-              ])
-            "
-          >
-            <h3>Elite</h3>
-            <span class="vip-price">R$ 19,99</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip4', 'Elite+', 'R$ 24,00', [
-                'Tag [Elite+]',
-                'Kit Elite+ e Elite e VIP+ e VIP',
-                'Acesso Total a Comandos VIP',
-                'Suporte Prioritário',
-                '/escondernick e /mostrarnick',
-                'Skins Personalizadas',
-              ])
-            "
-          >
-            <h3>Elite+</h3>
-            <span class="vip-price">R$ 24,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip5', 'BETA', 'R$ 30,99', [
-                'Tag [BETA]',
-                'Kit Elite+ , Elite , VIP+ e VIP',
-                'Acesso Total a maiorioria dos Comandos',
-                'Prioridade Máxima',
-                '/escondernick e /mostrarnick',
-                'Skins Exclusivas',
-                'Destaque no Tab',
-              ])
-            "
-          >
-            <h3>BETA</h3>
-            <span class="vip-price">R$ 30,99</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('vip5', 'JAPAN', 'R$ 17,99', [
-                'Tag [JAPAN]',
-                'Kit VIP e o VIP+',
-                'Acesso aos Comandos',
-                'Prioridade',
-                '/escondernick e /mostrarnick',
-                'Skins',
-                'Destaque no Tab',
-              ])
-            "
-          >
-            <h3>JAPAN</h3>
-            <span class="vip-price">R$ 40,99</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('Unmute', 'Unmute', 'R$ 5,00', [
-                'Unmute Minecraft',
-                'Falar de volta no chat'
-              ])
-            "
-          >
-            <h3>Unmute</h3>
-            <span class="vip-price">R$ 5,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('UnBan', 'UnBan', 'R$ 15,00', [
-                'Unban Minecraft',
-                'Voltar a Jogar'
-              ])
-            "
-          >
-            <h3>UnBan</h3>
-            <span class="vip-price">R$ 15,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('Unmute Discord', 'Unmute Discord', 'R$ 5,00', [
-                'Unmute Discord',
-                'Falar de volta no chat e nas call'
-              ])
-            "
-          >
-            <h3>Unmute Discord</h3>
-            <span class="vip-price">R$ 5,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
-          </div>
-          <div
-            class="vip-card"
-            onclick="
-              showVipDetails('UnBan Discord', 'UnBan Discord', 'R$ 10,00', [
-                'Unban falar no Discord ',
-                'Voltar a falar nas call e no chat'
-              ])
-            "
-          >
-            <h3>UnBan Discord</h3>
-            <span class="vip-price">R$ 10,00</span>
-            <span
-              class="cta-button"
-              style="padding: 0.5rem 1rem; font-size: 0.8rem"
-              >Ver Detalhes</span
-            >
+          <div class="category-list">
+            <div class="category-item active" onclick="filterStore('vips', this)">💎 <span>Planos VIP</span></div>
+            <div class="category-item" onclick="filterStore('utility', this)">🛠️ <span>Minecraft</span></div>
+            <div class="category-item" onclick="filterStore('discord', this)">💬 <span>Discord</span></div>
           </div>
         </div>
 
-        <div id="vipDetails" class="vip-details">
-          <h3 id="detailTitle" style="color: var(--accent-neon)"></h3>
-          <p
-            id="detailPrice"
-            style="font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem"
-          ></p>
-          <ul id="detailList"></ul>
-          <div style="text-align: center; margin-top: 2rem">
-            <button class="cta-button" onclick="showPayment()">
-              Comprar Agora
-            </button>
+        <div class="store-main">
+          <div class="store-top-bar">
+            <h3 id="categoryTitle">Planos VIP</h3>
+            <div class="cart-status" onclick="toggleCart()">
+              🛒 Carrinho <span id="cartCount" class="cart-count">0</span>
+            </div>
+          </div>
+
+          <div class="store-content">
+            <div id="productGrid" class="product-grid"></div>
           </div>
         </div>
 
-        <div id="paymentArea" class="payment-area">
-          <h3>Pagamento via PIX</h3>
-          <p>Copie e cole a chave abaixo no seu aplicativo do banco:</p>
-          <span class="pix-key" id="pixKey"
-            >bernardocamposbezerra@gmail.com ou 1226315371
-          </span>
-
-          <div class="discord-notice">
-            <strong>⚠️ JÁ COMPROU?</strong>
-            <span
-              >Envie o comprovante agora mesmo no nosso
-              <strong
-                >Discord ou com o HarryDev no Discord ou ArthurGG__
-                <a href="https://discord.gg/W4r98Yjtj"
-                 target="_blank" >Abra ticket no Discord</a
-                ></strong
-              >
-              para liberar seu VIP!</span
-            >
+        <!-- CART PANEL -->
+        <div id="cartPanel" class="cart-overlay">
+          <div class="cart-header">
+            <h3>Seu Carrinho</h3>
+            <span style="cursor:pointer" onclick="toggleCart()">✕</span>
           </div>
+          <div id="cartItems" class="cart-items">
+            <p style="text-align:center; color:var(--text-dim)">Carrinho vazio...</p>
+          </div>
+          <div class="cart-footer">
+            <div class="cart-total">
+              <span>Total:</span>
+              <span id="cartTotal">R$ 0,00</span>
+            </div>
+            <div class="coupon-box">
+              <input type="text" id="couponInput" class="coupon-input" placeholder="CUPOM">
+              <button class="coupon-btn" onclick="applyCoupon()">Aplicar</button>
+            </div>
+            <div id="couponMsg" class="coupon-msg"></div>
+            <button class="btn-checkout" onclick="openPayment()">Finalizar Compra</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-          <p
-            style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1rem"
-          >
-            Seu VIP será ativado assim que confirmarmos o pagamento.
-          </p>
+    <!-- PAYMENT MODAL -->
+    <div id="paymentModal" class="payment-modal">
+      <div class="payment-card">
+        <span class="close-store" onclick="closePayment()">&times;</span>
+        <h3>Finalizar Pagamento</h3>
+        <p>Sua compra foi processada. Utilize a chave PIX abaixo:</p>
+        <div class="pix-box">
+          <span class="pix-key">bernardocamposbezerra@gmail.com</span>
+          <div style="font-size: 0.9rem; color: var(--text-dim);">ou 1226315371</div>
+        </div>
+        <div class="discord-link">
+          <span>📢 Envie o comprovante no Discord para ativação:</span>
+          <a href="https://discord.gg/W4r98Yjtj" target="_blank">Abrir Ticket →</a>
         </div>
       </div>
     </div>
@@ -1086,6 +716,142 @@
     </footer>
 
     <script>
+      const storeData = {
+        vips: [
+          { id: 'v1', name: 'VIP', price: 10.00, perks: ['Tag [VIP]', 'Kit Inicial', 'Chat VIP'], featured: false },
+          { id: 'v2', name: 'VIP+', price: 15.00, perks: ['Tag [VIP+]', 'Kits VIP/VIP+', 'Comandos VIP', 'Prioridade'], featured: false },
+          { id: 'v3', name: 'Elite', price: 19.99, perks: ['Tag [Elite]', 'Kits Full', 'Teleporte Expandido'], featured: false },
+          { id: 'v4', name: 'Elite+', price: 24.00, perks: ['Tag [Elite+]', 'Acesso Total', 'Suporte Prioritário'], featured: true },
+          { id: 'v5', name: 'BETA', price: 30.99, perks: ['Tag [BETA]', 'Prioridade Máxima', 'Skins Exclusivas'], featured: false },
+          { id: 'v6', name: 'JAPAN', price: 40.99, perks: ['Tag [JAPAN]', 'Kits Lendários', 'Destaque Tab'], featured: false },
+        ],
+        utility: [
+          { id: 'u1', name: 'Unmute Minecraft', price: 5.00, perks: ['Voltar a falar no chat'], featured: false },
+          { id: 'u2', name: 'UnBan Minecraft', price: 15.00, perks: ['Voltar a jogar'], featured: false },
+        ],
+        discord: [
+          { id: 'd1', name: 'Unmute Discord', price: 5.00, perks: ['Falar no Discord'], featured: false },
+          { id: 'd2', name: 'UnBan Discord', price: 10.00, perks: ['Voltar ao servidor Discord'], featured: false },
+        ]
+      };
+
+      let cart = [];
+      let activeDiscount = 0;
+
+      function formatPrice(val) {
+        return "R$ " + val.toFixed(2).replace('.', ',');
+      }
+
+      function openStore() {
+        document.getElementById('storeOverlay').style.display = 'flex';
+        filterStore('vips', document.querySelector('.category-item'));
+      }
+
+      function closeStore() {
+        document.getElementById('storeOverlay').style.display = 'none';
+      }
+
+      function filterStore(category, element) {
+        document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+        element.classList.add('active');
+        document.getElementById('categoryTitle').innerText = element.innerText;
+
+        const grid = document.getElementById('productGrid');
+        grid.innerHTML = '';
+
+        storeData[category].forEach(p => {
+          const card = document.createElement('div');
+          card.className = `product-card ${p.featured ? 'featured' : ''}`;
+          card.innerHTML = `
+            ${p.featured ? '<span class="featured-badge">Recomendado</span>' : ''}
+            <h3>${p.name}</h3>
+            <span class="price">${formatPrice(p.price)}</span>
+            <button class="btn-add-cart" onclick="addToCart('${category}', '${p.id}')">Adicionar ao Carrinho</button>
+          `;
+          grid.appendChild(card);
+        });
+      }
+
+      function addToCart(category, id) {
+        const product = storeData[category].find(p => p.id === id);
+        cart.push(product);
+        updateCartUI();
+
+        const btn = event.target;
+        const originalText = btn.innerText;
+        btn.innerText = '✓ Adicionado!';
+        btn.style.background = '#00ff88';
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = 'var(--accent-neon)';
+        }, 1000);
+      }
+
+      function updateCartUI() {
+        document.getElementById('cartCount').innerText = cart.length;
+        const itemsDiv = document.getElementById('cartItems');
+        itemsDiv.innerHTML = '';
+
+        let total = 0;
+        cart.forEach((item, index) => {
+          total += item.price;
+          const div = document.createElement('div');
+          div.className = 'cart-item';
+          div.innerHTML = `
+            <div class="cart-item-info">
+              <h4>${item.name}</h4>
+              <span>${formatPrice(item.price)}</span>
+            </div>
+            <button class="btn-remove" onclick="removeFromCart(${index})">✕</button>
+          `;
+          itemsDiv.appendChild(div);
+        });
+
+        if(cart.length === 0) itemsDiv.innerHTML = '<p style="text-align:center; color:var(--text-dim)">Carrinho vazio...</p>';
+
+        const finalTotal = total * (1 - activeDiscount);
+        document.getElementById('cartTotal').innerText = formatPrice(finalTotal);
+      }
+
+      function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCartUI();
+      }
+
+      function toggleCart() {
+        const panel = document.getElementById('cartPanel');
+        panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+      }
+
+      function applyCoupon() {
+        const coupon = document.getElementById('couponInput').value.toUpperCase().trim();
+        const msg = document.getElementById('couponMsg');
+
+        if (coupon === 'JAPAN') {
+          activeDiscount = 0.10;
+          msg.innerText = 'Cupom JAPAN aplicado! -10%';
+          msg.className = 'coupon-msg msg-success';
+        } else if (coupon === 'GG' || coupon === 'HARRY') {
+          activeDiscount = 0.15;
+          msg.innerText = `Cupom ${coupon} aplicado! -15%`;
+          msg.className = 'coupon-msg msg-success';
+        } else {
+          activeDiscount = 0;
+          msg.innerText = 'Cupom inválido!';
+          msg.className = 'coupon-msg msg-error';
+        }
+        updateCartUI();
+      }
+
+      function openPayment() {
+        if(cart.length === 0) return alert('Seu carrinho está vazio!');
+        document.getElementById('paymentModal').style.display = 'flex';
+      }
+
+      function closePayment() {
+        document.getElementById('paymentModal').style.display = 'none';
+      }
+
       function copyIp(text, element) {
         navigator.clipboard.writeText(text).then(() => {
           const hint = element.querySelector(".copy-hint");
@@ -1099,55 +865,23 @@
         });
       }
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) entry.target.classList.add("active");
-          });
-        },
-        { threshold: 0.1 },
-      );
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
-
-      function openVipModal() {
-        document.getElementById("vipModal").style.display = "flex";
-        document.getElementById("vipDetails").style.display = "none";
-        document.getElementById("paymentArea").style.display = "none";
+      // Efeito de Parallax no fundo ao mover o mouse
+      function parallax(e) {
+        const bg = document.getElementById('bg-image-container');
+        const x = (window.innerWidth / 2 - e.pageX) / 50;
+        const y = (window.innerHeight / 2 - e.pageY) / 50;
+        bg.style.transform = `scale(1.1) translate(${x}px, ${y}px)`;
       }
 
-      function closeVipModal() {
-        document.getElementById("vipModal").style.display = "none";
-      }
-
-      function showVipDetails(id, name, price, perks) {
-        document.getElementById("vipDetails").style.display = "block";
-        document.getElementById("paymentArea").style.display = "none";
-        document.getElementById("detailTitle").innerText = name;
-        document.getElementById("detailPrice").innerText = "Valor: " + price;
-
-        const list = document.getElementById("detailList");
-        list.innerHTML = "";
-        perks.forEach((perk) => {
-          const li = document.createElement("li");
-          li.innerText = perk;
-          list.appendChild(li);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("active");
         });
-      }
-
-      function showPayment() {
-        document.getElementById("paymentArea").style.display = "block";
-        document
-          .getElementById("paymentArea")
-          .scrollIntoView({ behavior: "smooth" });
-      }
+      }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
       window.onclick = function (event) {
-        const modal = document.getElementById("vipModal");
-        if (event.target == modal) {
-          closeVipModal();
-        }
+        if (event.target == document.getElementById("storeOverlay")) closeStore();
       };
     </script>
   </body>
