@@ -552,6 +552,17 @@
         padding: 2rem;
         margin: 2rem 0;
         border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      .pix-qrcode {
+        width: 200px;
+        height: 200px;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
       }
       .pix-key { font-family: var(--font-mono); font-size: 1.3rem; display: block; margin-bottom: 0.5rem; }
       .discord-link {
@@ -791,8 +802,9 @@
       <div class="payment-card">
         <span class="close-store" onclick="closePayment()">&times;</span>
         <h3>Finalizar Pagamento</h3>
-        <p>Sua compra foi processada. Utilize a chave PIX abaixo:</p>
+        <p>Sua compra foi processada. Utilize o QR Code ou a chave PIX abaixo:</p>
         <div class="pix-box">
+          <img id="pixQRCode" src="" alt="QR Code PIX" class="pix-qrcode" style="display:none;">
           <span class="pix-key">bernardocamposbezerra@gmail.com</span>
           <div style="font-size: 0.9rem; color: var(--text-dim);">ou 1226315371</div>
         </div>
@@ -919,7 +931,11 @@
         const coupon = document.getElementById('couponInput').value.toUpperCase().trim();
         const msg = document.getElementById('couponMsg');
 
-        if (coupon === 'JAPAN') {
+        if (coupon === 'HARRYDEV') {
+          activeDiscount = 1.0; // 100% de desconto
+          msg.innerText = 'Cupom HarryDev aplicado! Valor zerado!';
+          msg.className = 'coupon-msg msg-success';
+        } else if (coupon === 'JAPAN') {
           activeDiscount = 0.10;
           msg.innerText = 'Cupom JAPAN aplicado! -10%';
           msg.className = 'coupon-msg msg-success';
@@ -937,6 +953,24 @@
 
       function openPayment() {
         if(cart.length === 0) return alert('Seu carrinho está vazio!');
+
+        // Calcular total final para o QR Code
+        let total = 0;
+        cart.forEach(item => total += item.price);
+        const finalTotal = total * (1 - activeDiscount);
+
+        const qrImg = document.getElementById('pixQRCode');
+
+        if (finalTotal > 0) {
+            // Gerar QR Code dinâmico via API de terceiros (Mercado Pago/QuickChart)
+            // Usamos o QuickChart para criar um QR Code do texto da chave e valor
+            const pixData = `Chave: bernardocamposbezerra@gmail.com | Valor: ${finalTotal.toFixed(2)}`;
+            qrImg.src = `https://quickchart.io/qr?text=${encodeURIComponent(pixData)}&size=200`;
+            qrImg.style.display = 'block';
+        } else {
+            qrImg.style.display = 'none';
+        }
+
         document.getElementById('paymentModal').style.display = 'flex';
       }
 
