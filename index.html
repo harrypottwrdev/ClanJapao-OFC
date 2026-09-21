@@ -931,9 +931,9 @@
         const coupon = document.getElementById('couponInput').value.toUpperCase().trim();
         const msg = document.getElementById('couponMsg');
 
-        if (coupon === 'HARRYDEV') {
+        if (coupon === 'HARRYDEV' || coupon === 'DONOSGG') {
           activeDiscount = 1.0; // 100% de desconto
-          msg.innerText = 'Cupom HarryDev aplicado! Valor zerado!';
+          msg.innerText = 'Cupom aplicado! Valor zerado!';
           msg.className = 'coupon-msg msg-success';
         } else if (coupon === 'JAPAN') {
           activeDiscount = 0.10;
